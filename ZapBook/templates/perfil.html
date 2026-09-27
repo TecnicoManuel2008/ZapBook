@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head> 
+    <title> Perfil do usuario </title>
+</head>
+<body>
+     <main>
+     	<p> Date: {{ time }} </p>
+        <h1 style="color: green;">
+   	     <center>ZapBook</center>
+        </h1>
+        <h2>Meu Perfil no ZapBook </h2>
+        <p> Bem vindo a sua conta {{ current_user.nome }}  </p>
+     </main>
+     <p>
+        Se quiser sair click em <a href=" {{ url_for('logout') }} "> Sair  </a>
+     </p>
+</body>
+</html>

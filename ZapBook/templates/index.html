@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head> 
+    <title> Cadastro </title>
+</head>
+<body> 
+    <p> Data: {{ time }} </p>
+    {% with message = get_flashed_messages(with_categories=true) %}
+        {% for cat, msg in message %}
+            <span style="color: red;" class="{{ cat }}"> {{ msg }} </span>
+        {% endfor %}
+    {% endwith %}
+    <form action=" {{ url_for('cadastrar') }} " method="POST">
+         <fieldset>
+             <legend>Cadastro</legend>
+             <!-- criar o formulario-Flask -->
+             {{ form.hidden_tag() }}
+                 
+             {{ form.name.label() }}
+             {{ form.name() }} <br>
+             {% if form.name.errors %}
+                {% for erro in form.name.errors %}
+                      <span style="color: red;"> {{ erro }}</span>
+                {% endfor %}
+             {% endif %}
+             <br>
+             {{ form.SName.label() }}
+             {{ form.SName() }} <br>
+             {% if form.SName.errors %}
+                {% for erro in form.SName.errors %}
+                      <span style="color: red;"> {{ erro }}</span>
+                {% endfor %}
+             {% endif %}
+                <br>
+             {{ form.email.label() }}
+             {{ form.email() }} <br>
+             {% if form.email.errors %}
+                {% for erro in form.email.errors %}
+                      <span style="color: red;"> {{ erro }}</span>
+                {% endfor %}
+             {% endif %}
+               <br>
+             {{ form.password.label() }}
+             {{ form.password() }} <br>
+             {% if form.password.errors %}
+                {% for erro in form.password.errors %}
+                      <span style="color: red;"> {{ erro }}</span>
+                {% endfor %}
+             {% endif %}
+              <br>
+             {{ form.confirm.label() }}
+             {{ form.confirm() }}  <br>
+             {% if form.confirm.errors %}
+                {% for erro in form.confirm.errors %}
+                      <span style="color: red;"> {{ erro }}</span>
+                {% endfor %}
+             {% endif %}
+               <br>
+             {{ form.entrar() }}
+         </fieldset>
+    </form>
+</body>
+</html>
