@@ -10,6 +10,8 @@ from forma import RegisterForm, LoginForm
 from sqlalchemy.exc import IntegrityError
 from datetime import datetime
 
+from dotenv import load_dotenv
+
 app = Flask(__name__)
 app.config.from_object(DevConfig)
 
@@ -17,6 +19,8 @@ login = LoginManager(app)
 
 login.init_app(app)
 login.login_view = "main"
+
+load_dotenv()
 
 def get_tempo():
     hoje = f"{datetime.today().day}/{datetime.today().month}/{datetime.today().year}"
