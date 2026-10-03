@@ -1,7 +1,8 @@
 
-from flask import Flask, flash ,render_template, request, url_for, redirect
+from flask import Flask, flash , render_template, request, url_for, redirect
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required, UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.exceptions import NotFound
 
 from models import Users, SessionLocal
 from config import DevConfig
@@ -12,6 +13,8 @@ from datetime import datetime
 
 from dotenv import load_dotenv
 
+load_dotenv()
+
 app = Flask(__name__)
 app.config.from_object(DevConfig)
 
@@ -20,14 +23,12 @@ login = LoginManager(app)
 login.init_app(app)
 login.login_view = "main"
 
-load_dotenv()
-
-def get_tempo():
+def get_tempo() -> str:
     hoje = f"{datetime.today().day}/{datetime.today().month}/{datetime.today().year}"
     return hoje
 
 @login.user_loader
-def cadastro(id_user):
+def cadastro(id_user: str) -> models.Users:
     """ esta funcao serve de API entre
         o flask-login e o cookie
         id_user: <- id do usuario no cookie
@@ -37,12 +38,12 @@ def cadastro(id_user):
 
 @login.unauthorized_handler
 def Unauthenticad():
-    # esta funcao vai mandar o flash se o nao esta logado
+    # esta funcao vai mandar o flash se o usuario nao esta logado
     flash('Inicie Sessao ou faça login! ', 'erro')
     return redirect(url_for('main'))
 
 @app.errorhandler(404)
-def NotFound(e):
+def NotFound(e: NotFound):
     return render_template('404.html')
 
 @app.route('/', methods=['GET', "POST"])
@@ -113,4 +114,4 @@ def logout():
 
 if __name__ == '__main__':
    app.run(debug=True, port=8000)
-
+   
