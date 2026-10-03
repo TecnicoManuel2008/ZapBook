@@ -12,8 +12,8 @@ class RegisterForm(FlaskForm):
     name = StringField("Nome", validators=[DataRequired(message="Digite o Nome")])
     SName = StringField("Sobrenome", validators=[DataRequired()])
     email = EmailField("Email", validators=[
-       DataRequired(message="Digite a Email")
-      # Email(message="Tem que ter o @")
+       DataRequired(message="Digite a Email"),
+       Email(message="Tem que ter o @")
     ])
     password = PasswordField("Senha", validators=[
        DataRequired(message="Digite a senha"),

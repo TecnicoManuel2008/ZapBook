@@ -28,7 +28,7 @@ def get_tempo() -> str:
     return hoje
 
 @login.user_loader
-def cadastro(id_user: str) -> models.Users:
+def cadastro(id_user: str) -> Users:
     """ esta funcao serve de API entre
         o flask-login e o cookie
         id_user: <- id do usuario no cookie
