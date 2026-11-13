@@ -43,7 +43,7 @@ def Unauthenticad():
 
 @app.errorhandler(404)
 def NotFound(e: NotFound):
-    return render_template('ERRORs/400/404.html')
+    return render_template('ERRORs/E400/404.html')
 
 @app.route('/', methods=['GET', "POST"])
 def main():
