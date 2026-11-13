@@ -24,12 +24,11 @@ login.init_app(app)
 login.login_view = "main"
 
 def get_tempo() -> str:
-    hoje = f"{datetime.today().day}/{datetime.today().month}/{datetime.today().year}"
-    return hoje
+    return f"{datetime.today().day}/{datetime.today().month}/{datetime.today().year}"
 
 @login.user_loader
 def cadastro(id_user: str) -> Users:
-    """ esta funcao serve de API entre
+    """ Esta funcao serve de API entre
         o flask-login e o cookie
         id_user: <- id do usuario no cookie
     """
@@ -44,7 +43,7 @@ def Unauthenticad():
 
 @app.errorhandler(404)
 def NotFound(e: NotFound):
-    return render_template('404.html')
+    return render_template('ERRORs/400/404.html')
 
 @app.route('/', methods=['GET', "POST"])
 def main():
