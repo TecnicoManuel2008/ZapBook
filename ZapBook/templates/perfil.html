@@ -3,13 +3,17 @@
 <html lang="pt-br">
 <head> 
     <title> Perfil do usuario </title>
+    <style>
+        h1{
+           color: green;
+    	   text-align: center;
+        }
+    </style>
 </head>
 <body>
      <main>
      	<p> Date: {{ time }} </p>
-        <h1 style="color: green;">
-   	     <center>ZapBook</center>
-        </h1>
+        <h1>ZapBook: livre</h1>
         <h2>Meu Perfil no ZapBook </h2>
         <p> Bem vindo a sua conta {{ current_user.nome }}  </p>
      </main>
