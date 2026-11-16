@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Sign In</title>
+</head>
+<body>
+  <p> Date: {{ time }} </p>
+
+  {% with message =  get_flashed_messages(with_categories=true) %}
+      {% for cat, msg in message %}
+          <span style="color: red;"> {{ msg }}</span>
+      {% endfor %}
+  {% endwith %}
+  <h1>Entrar com uma conta ZapBook</h1>
+  <form action=" {{ url_for('main') }} " method="POST">
+    <fieldset>
+      <legend> Entrar </legend>
+      {{ form.hidden_tag() }}
+      
+      {{ form.email.label() }}
+      {{ form.email() }} <br>
+      {% if form.email.errors %}
+          {% for error in form.email.errors %}
+               <span style="color: red;"> {{ error }}</span>
+          {% endfor %}
+      {% endif %} <br>
+      
+      {{ form.password.label() }}
+      {{ form.password() }} <br>
+      {% if form.password.errors %}
+          {% for error in form.password.errors %}
+               <span style="color: red;"> {{ error }}</span>
+          {% endfor %}
+      {% endif %} <br>
+      
+      {{ form.entrar() }}<br>
+      {% if reponse %}
+          <span style="color: red;"> {{ reponse }}</span>
+      {% endif %}
+    </fieldset>
+  </form>
+  <a href=" {{ url_for('cadastrar')  }} ">Se cadastrar no ZapBook</a>
+</body>
+</html>
