@@ -16,11 +16,11 @@ e banco de dados com __SQLAlchemy: mysql__
 1. repo/ base de dados (sem autorisacao de visualisacao)
 
 ## Lista de tarefas
-[x] construir o backend
-[x] melhorar os formulatorios 
-[ ] melhorar o frontend
-[ ] inserir Javascript 
-[ ] inserir profil completo
+- [x] construir o backend
+- [x] melhorar os formulatorios 
+- [ ] melhorar o frontend
+- [ ] inserir Javascript 
+- [ ] inserir profil completo
 
 ## Como usar o projecto
 1. clonar o repositorio com: `bash: git clone https://github.com/TecnicoManuel2008/ZapBook.git`
